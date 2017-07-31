@@ -1,0 +1,18 @@
+{
+  "name": "gulp-webapp",
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5",
+    "mustache.js": "^2.3.0",
+    "animate.css": "^3.5.2"
+  },
+  "overrides": {
+    "bootstrap-sass": {
+      "main": [
+        "assets/stylesheets/_bootstrap.scss",
+        "assets/fonts/bootstrap/*",
+        "assets/javascripts/bootstrap.js"
+      ]
+    }
+  }
+}

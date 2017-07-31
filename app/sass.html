@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sass</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- build:css styles/sass.css -->
+    <link rel="stylesheet" href="styles/sass.css">
+    <!-- endbuild -->
+
+</head>
+
+<body>
+    <!--[if IE]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="active">
+                    <a href="#">Sass</a>
+                </li>
+                <li>
+                    <a href="bootstrap.html">Bootstrap</a>
+                </li>
+                <li>
+                    <a href="jquery.html">jQuery</a>
+                </li>
+                <li>
+                    <a href="pattern.html">设计模式</a>
+                </li>
+            </ul>
+            <h3 class="text-muted">gulp webapp</h3>
+        </div>
+
+        <div class="sass">
+            <h3>sass入门</h3>
+            <div class="demo">
+                demo
+            </div>
+        </div>
+
+        <!-- filter -->
+        <div class="filter">
+            <h3>filter</h3>
+            <p>filter: none | blur() | brightness() | contrast() | drop-shadow() | grayscale() | hue-rotate() | invert() | opacity() | saturate() | sepia() | url();</p>
+
+            <div class="filter-pic-list">
+                <!--<h5>高斯模糊</h5>
+                <p>filter: blur(px);css长度值除了%</p>-->
+                <div class="filter-item">
+                    <img class="pic blur" src="images/bpic2181.jpg" alt="枯树">
+                    <p>
+                        高斯模糊：filter: blur(px);css长度值除了%
+                    </p>
+                </div>
+                <div class="filter-item">
+                    <img class="pic brightness" src="images/bpic2181.jpg" alt="枯树">
+                    <p>亮度：filter: brightness(%);也可以用小数</p>
+                </div>
+                <div class="filter-item">
+                    <img class="pic contrast" src="images/bpic2181.jpg" alt="枯树">
+                    <p>对比度：filter: contrast(%);也可以用小数</p>
+                </div>
+                <div class="filter-item">
+                    <img class="pic grayscale" src="images/bpic2181.jpg" alt="枯树">
+                    <p>灰度：filter: grayscale(%);也可以用小数，值在0-1之间</p>
+                </div>
+                <div class="filter-item">
+                    <img class="pic hue-rotate" src="images/bpic2181.jpg" alt="枯树">
+                    <p>色相旋转：filter: hue-rotate(deg)</p>
+                </div>
+                <div class="filter-item">
+                    <img class="pic invert" src="images/bpic2181.jpg" alt="枯树">
+                    <p>反转输入图像：filter: invert(%);也可以用小数，值在0-1之间</p>
+                </div>
+                <div class="filter-item">
+                    <img class="pic opacity" src="images/bpic2181.jpg" alt="枯树">
+                    <p>透明度：filter: opacity(%);也可以用小数，值在0-1之间</p>
+                </div>
+                <div class="filter-item">
+                    <img class="pic saturate" src="images/bpic2181.jpg" alt="枯树">
+                    <p>饱和度：filter: saturate(%);也可以用小数</p>
+                </div>
+                <div class="filter-item">
+                    <img class="pic sepia" src="images/bpic2181.jpg" alt="枯树">
+                    <p>褐色：filter: sepia(%);也可以用小数，值在0-1之间</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- transform -->
+        <div class="transform">
+            <h3>transform</h3>
+            <p>Transform字面上就是变形，改变的意思，在CSS3中主要包括以下几种：旋转（rotate）、扭曲（skew）、缩放（scale）、移动（translate）以及矩阵变形（matrix）。</p>
+            <h3>语法</h3>
+            <pre>transform: none | &lt;transform-function&gt; [ &lt;transform-function&gt; ]*<br>也就是：<br>transform: rotate | scale | skew | translate | matrix;</pre>
+            <div class="rotate">
+                <img class="pic" src="images/bpic2181.jpg" alt="枯树">
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>♥ from the Yeoman team</p>
+        </div>
+    </div>
+</body>
+
+</html>

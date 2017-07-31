@@ -1,0 +1,539 @@
+/*
+* 1.变量
+* sass中可以定义变量，方便统一修改和维护
+*/
+$fontStack: Helvetica;
+$primaryColor: #333;
+
+.body {
+    $primaryColor: #ccc;
+    font-family: $fontStack;
+    color: $primaryColor;
+}
+
+/*
+* 2.嵌套
+* sass可以进行选择器的嵌套，表示层级关系，看起来很优雅整齐
+*/
+
+.nav {
+    .ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .li {
+        display: inline-block;
+    }
+
+    .a {
+        display: block;
+        padding: 6px 12px;
+        text-decoration: none;
+    }
+}
+
+/*
+* 3.导入
+* sass中如导入其他sass文件，最后编译为一个css文件，优于纯css的@import
+*/
+
+// @import 'reset';
+
+/*
+* 4.mixin
+* sass中可用mixin定义一些代码片段，且可传参数，方便日后根据需求调用。从此处理css3的前缀兼容轻松便捷。
+*/
+
+@mixin box-sizing ($sizing){
+    -webkit-box-sizing: $sizing;
+    -moz-box-sizing: $sizing;
+    box-sizing: $sizing;
+}
+
+.box-border {
+    border: 1px solid #ccc;
+    @include box-sizing(border-box);
+}
+
+/*
+* 5.扩展/继承
+* sass可通过@extend来实现代码组合声明，使代码更加优越简洁。
+*/
+
+.message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #333;
+}
+
+.success {
+    @extend .message;
+    border-color: green;
+}
+
+.error {
+    @extend .message;
+    border-color: red;
+}
+
+.warning {
+    @extend .message;
+    border-color: yellow;
+}
+
+/*
+* 6.运算
+* sass可进行简单的加减乘除运算等
+*/
+
+.container {
+    width: 100%;
+}
+
+article[role="main"]{
+    float: left;
+    width: 600px / 960px * 100%;
+}
+
+aside[role="complimentary"]{
+    float: right;
+    width: 300px / 960px * 100%;
+}
+
+/*
+* 7.颜色
+* sass中集成了大量的颜色函数，让变换颜色更加简单。
+*/
+
+$linkColor: #08c;
+.a {
+    text-decoration: none;
+    color: $linkColor;
+    &:hover {
+        color: darken($linkColor, 10%);
+    }
+}
+
+// 变量
+// 普通变量
+
+$fontSize: 12px;
+.a {
+    font-size: $fontSize;
+}
+
+// 默认变量
+
+$baseLineHeight: 2;
+$baseLineHeight: 1.5 !default;
+.p {
+    line-height: $baseLineHeight;
+}
+
+// 特殊变量
+
+$borderDirection: top !default;
+$baseFontSize: 12px !default;
+
+.border-#{$borderDirection} {
+    border-#{$borderDirection}: 1px solid #ccc;
+}
+
+.span {
+    font: #{$baseFontSize} / #{$baseLineHeight};
+}
+
+// 多值变量
+// list
+$px: 5px 10px 20px 30px;
+$color: red blue, yellow green;
+$padding: (5px 10px) (20px 30px);
+
+$linkColor2: #08c #333 !default;
+.span {
+    color: nth($linkColor2, 1);
+
+    &:hover {
+        color: nth($linkColor2, 2);
+    }
+}
+
+// map
+$headings: (h1: 2em, h2: 1.5em, h3: 1.2em);
+@each $header, $size in $headings {
+    .#{$header} {
+        font-size: $size;
+    }
+}
+
+// 全局变量
+$height: 20px;
+.parent {
+    $height: 26px;
+    height: $height;
+}
+.children {
+    height: $height;
+}
+
+// 嵌套
+// 选择器嵌套
+#top_nav {
+    line-height: 40px;
+    text-transform: capitalize;
+    background-color: #333;
+    li {
+        float: left;
+    }
+    a {
+        display: block;
+        padding: 0 10px;
+        color: #fff;
+
+        &:hover {
+            color: #ddd;
+        }
+    }
+}
+
+// 属性嵌套
+.fakeshadow {
+    border: {
+        style: solid;
+        left: {
+            width: 2px;
+            color: #888;
+        }
+        right: {
+            width: 2px;
+            color: #888;
+        }
+    }
+}
+// @at-root
+// 普通跳出嵌套
+.parent-1 {
+    color: #f00;
+    .child {
+        width: 100px;
+    }
+}
+
+.parent-2 {
+    color: #f00;
+    @at-root .child {
+        width: 200px;
+    }
+}
+
+.parent-3 {
+    color: #f00;
+    @at-root {
+        .child {
+            width: 300px;
+        }
+        .child {
+            width: 400px;
+        }
+    }
+}
+
+// @at-root(without: ...) 和 @at-root(with: ...)
+// 跳出父级元素嵌套
+@media print {
+    .parent1 {
+        color: #f00;
+        @at-root .child1 {
+            width: 200px;
+        }
+    }
+}
+
+// 跳出media嵌套，父级有效
+
+
+// 跳出media和父级
+
+// @at-root与&配合使用
+.child {
+    @at-root .parent & {
+        color: #f00;
+    }
+}
+
+// 应用于@keyframe
+.demo {
+    animation: motion 10s infinite;
+
+    @at-root {
+        @keyframes motion {
+            0% {
+                transform: rotate(0);
+                background-color: darken(red, 20%);
+            }
+            25% {
+                transform: rotate(90deg);
+                background-color: darken(yellow, 20%);
+            }
+            50% {
+                transform: rotate(180deg);
+                background-color: darken(green, 40%);
+            }
+            75% {
+                transform: rotate(270deg);
+                background-color: darken(blue, 60%);
+            }
+            100% {
+                transform: rotate(360deg);
+                background-color: darken(pink, 80%);
+            }
+        }
+    }
+}
+
+// minxin
+// 无参数mixin
+@mixin center-block {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+}
+
+.demo {
+    @include center-block;
+    width: 400px;
+    height: 400px;
+    font-size: 54px;
+    text-align: center;
+    line-height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 0 50px green;
+}
+
+// 有参数mixn
+@mixin opacity($opacity: 50){
+    opacity: $opacity / 100;
+    filter: alpha(opacity = $opacity);
+}
+
+.opacity {
+    @include opacity;
+}
+
+.opacity-80 {
+    @include opacity(80);
+}
+
+// 多个参数mixin
+@mixin horizontal-line($border: 1px dashed #ccc, $padding: 10px){
+    border-bottom: $border;
+    padding-top: $padding;
+    padding-bottom: $padding;
+}
+
+.imgtext-h li {
+    @include horizontal-line(1px solid #ccc);
+}
+
+.imgtext-h-product li {
+    @include horizontal-line($padding: 15px);
+}
+
+// 多组值参数mixin
+
+@mixin box-shadow($shadow...){
+    box-shadow: $shadow;
+}
+
+.box {
+    border: 1px solid #ccc;
+    filter: blur(4px);
+    display: flex;
+    @include box-shadow(0 2px 2px rgba(0, 0, 0, .3), 0 3px 3px rgba(0, 0, 0, .3), 0 4px 4px rgba(0, 0, 0, .3));
+}
+
+// @content
+
+@mixin max-screen($res) {
+    @media only screen and ( max-width: $res) {
+        @content;
+    }
+}
+
+@include max-screen(480px) {
+    .body {
+        color: red;
+    }
+}
+
+// 继承
+.h1 {
+    border: 4px solid #ff9aa9;
+}
+.speaker {
+    @extend .h1;
+    border-width: 2px;
+}
+
+// 占位选择器 %
+%ir {
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+// %clearfix {
+//     @if $lte7 {
+//         *zoom: 1;
+//     }
+//     &:before,
+//     &after {
+//         content: "";
+//         display: table;
+//         font: 0 / 0 a;
+//     }
+//     &:after {
+//         clear: both;
+//     }
+// }
+#header {
+    h1 {
+        @extend %ir;
+        width: 300px;
+    }
+}
+.ri {
+    @extend %ir;
+}
+// 函数
+$gray: #ccc !default;
+.text {
+    color: lighten($gray, 10%);
+}
+// 运算
+$baseGap: $baseFontSize * $baseLineHeight !default;
+$halfBaseGap: $baseGap / 2 !default;
+$smallFontSize: $baseFontSize - 2px !default;
+
+$_columns: 12 !default;
+$_column_width: 60px !default;
+$_gutter: 20px !default;
+$_gridsystem_width: $_columns * ($_column_width + $_gutter);
+
+// 条件判断及循环
+// @if判断
+$lte7: true;
+$type: monster;
+.ib {
+    display: inline-block;
+    @if $lte7 {
+        *display: inline;
+        *zoom: 1;
+    }
+}
+
+.p {
+    @if $type == ocean {
+        color: blue;
+    }@else if $type == matador {
+        color: red;
+    }@else if $type == monster {
+        color: green;
+    }@else {
+        color: black;
+    }
+}
+
+// 三目判断
+
+// @for循环
+@for $i from 1 through 3 {
+    item-#{$i} {
+        width: 2em * $i;
+    }
+}
+// @each循环
+// @each $var in <list or map>
+// 单个字段list数据循环
+$animal-list: puma, sea-slug, egret, salamander;
+@each $animal in $animal-list {
+    .#{$animal}-icon {
+        background-image: url('/images/#{$animal}.png');
+    }
+}
+
+// 多个字段list数据循环
+$animal-data: (puma, black, default), (sea-slug, blue, pointer), (egret, white, move);
+@each $animal, $color, $cursor in $animal-data {
+    .#{$animal}-icon {
+        background-image: url('/images/#{$animal}.png');
+        border: 2px solid $color;
+        cursor: $cursor;
+    }
+}
+
+// 多个字段map数据循环
+@each $header, $size in $headings {
+    .#{$header} {
+        font-size: $size;
+    }
+}
+
+// filter
+.filter {
+    .filter-pic-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        align-content: space-between;
+
+        .filter-item {
+            width: 200px;
+            .pic {
+                width: 100%;
+
+                &.blur {
+                    filter: blur(1px);
+                }
+                &.brightness {
+                    filter: brightness(1.5);
+                }
+                &.contrast {
+                    filter: contrast(1.5);
+                }
+                &.grayscale {
+                    filter: grayscale(0.5);
+                }
+                &.hue-rotate {
+                    filter: hue-rotate(240deg);
+                }
+                &.invert {
+                    filter: invert(0.5);
+                }
+                &.opacity {
+                    filter: opacity(0.5);
+                }
+                &.saturate {
+                    filter: saturate(1.5);
+                }
+                &.sepia {
+                    filter: sepia(1.7);
+                }
+            }
+        }
+    }
+}
+
+// transform
+.transform {
+    .rotate {
+        .pic {
+            width: 300px;
+            transform: rotate(170deg);
+        }
+    }
+}
