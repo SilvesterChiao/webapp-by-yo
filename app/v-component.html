@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>gulp webapp</title>
+    <title>组件</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
@@ -16,9 +16,19 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <!-- build:css styles/vue.css -->
+    <link rel="stylesheet" href="styles/vue.css">
     <!-- endbuild -->
+
+    <style>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+        opacity: 0
+    }
+    </style>
 
 </head>
 
@@ -30,8 +40,8 @@
     <div class="container">
         <div class="header">
             <ul class="nav nav-pills pull-right">
-                <li class="active">
-                    <a href="#">Home</a>
+                <li>
+                    <a href="index.html">Home</a>
                 </li>
                 <li>
                     <a href="sass.html">Sass</a>
@@ -48,17 +58,64 @@
                 <li>
                     <a href="vue.html">vue</a>
                 </li>
-                <li>
-                    <a href="pattern.html">设计模式</a>
-                </li>
             </ul>
-            <h3 class="text-muted">Silvester</h3>
+            <h3 class="text-muted">gulp webapp</h3>
         </div>
 
         <div class="jumbotron">
-            <h1>'Allo, 'Allo!</h1>
+            <h1 id="text">
+                组件
+            </h1>
             <p class="lead">Always a pleasure scaffolding your apps.</p>
             <p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
+        </div>
+
+        <div id="vm1">
+            <my-component></my-component>
+        </div>
+
+        <div id="vm2">
+            <your-component></your-component>
+        </div>
+
+        <div id="vm3">
+            <simple-counter></simple-counter>
+            <simple-counter></simple-counter>
+            <simple-counter></simple-counter>
+        </div>
+
+        <div id="vm4">
+            <child my-message="hello"></child>
+        </div>
+
+        <div id="vm5">
+            <!-- <input type="text" v-model="parentMsg"> -->
+            <br>
+            <child v-bind="todo"></child>
+        </div>
+
+        <div id="vm6">
+            <p>{{ total }}</p>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+        </div>
+
+        <div id="vm7">
+            <currency-input v-model="price"></currency-input>
+        </div>
+
+        <div id="example">
+            {{ number }}
+            <child :parent-msg="msg" v-on:add="parentAdd"></child>
+        </div>
+
+        <div id="demo">
+            <button v-on:click="show = !show">
+                Toggle
+            </button>
+            <transition name="fade">
+                <p v-if="show">hello</p>
+            </transition>
         </div>
 
         <div class="row marketing">
@@ -89,24 +146,7 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js scripts/plugins.js -->
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js scripts/main.js -->
-    <script src="scripts/main.js"></script>
-    <!-- endbuild -->
+    <script src="scripts/v-component.js"></script>
 </body>
 
 </html>

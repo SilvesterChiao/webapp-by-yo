@@ -1,0 +1,17 @@
+
+// transform
+.transform {
+    .rotate {
+        .pic {
+            width: 300px;
+            border: 1px solid darkslategray;
+            transform: rotateY(30deg);
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                // transform: scale(1.2);
+                transform: rotateY(0);
+            }
+        }
+    }
+}

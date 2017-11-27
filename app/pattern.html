@@ -77,63 +77,32 @@
                 </ul>
             </p>
         </div>
+        <div id="dom">
+            <div id="section1">
+
+            </div>
+        </div>
 
         <div class="footer">
             <p>♥ from the Yeoman team</p>
         </div>
     </div>
 
-    <script>
-        // Constructor
-        function Car(model, year, miles){
-            this.model = model;
-            this.year = year;
-            this.miles = miles;
-        }
+    <!-- build:js scripts/rhinoceros.js -->
+    <script src="scripts/object.js"></script>
+    <script src="scripts/dom.js"></script>
+    <script src="scripts/rhinoceros.js"></script>
+    <!-- endbuild -->
 
-        Car.prototype.toString = function(){
-            return this.model + ' has done ' + this.miles + ' miles';
-        }
-
-        var civic = new Car('Honda Civic', 2009, 20000);
-        var mondeo = new Car('Ford Mondeo', 2010, 5000);
-
-        console.log(civic.toString());
-        console.log(mondeo.toString());
-    </script>
-    <script>
-        // Module
-        var myModule = {
-            myProperty: 'someValue',
-            // 对象字面量可以包含属性和方法
-            // 例如，可以声明模块配置对象
-            myConfig: {
-                useCaching: true,
-                language: 'en'
-            },
-            // 基本方法
-            myMethod: function(){
-                console.log('Where in the world is Paul Irish today?');
-            },
-            // 根据当前配置输出信息
-            myMethod2: function(){
-                console.log('Caching is:' + (this.myConfig.useCaching) ? 'enabled' : 'disabled');
-            },
-            // 重写当前的配置
-            myMethod3: function(newConfig){
-                if(typeof newConfig === 'object'){
-                    this.myConfig = newConfig;
-                    console.log(this.myConfig.language);
-                }
-            }
-        }
-
-        myModule.myMethod();
-        myModule.myMethod3({
-            language: 'fr',
-            useCaching: false
-        })
-    </script>
+    <!-- build:js scripts/pattern.js -->
+    <!-- <script src="scripts/constructor.js"></script> -->
+    <script src="scripts/module.js"></script>
+    <script src="scripts/singleton.js"></script>
+    <script src="scripts/prototype.js"></script>
+    <script src="scripts/command.js"></script>
+    <script src="scripts/factory.js"></script>
+    <script src="scripts/pattern.js"></script>
+    <!-- endbuild -->
 </body>
 
 </html>

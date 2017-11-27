@@ -28,13 +28,31 @@ body {
 .header {
   padding-bottom: 20px;
   border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
 }
 
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
+  float: left;
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
+
+  color: #f35626;
+  background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hue 6s infinite linear;
+}
+
+@keyframes hue {
+    from {
+        filter: hue-rotate(0deg);
+    }
+
+    to {
+        filter: hue-rotate(-360deg);
+    }
 }
 
 /* Custom page footer */

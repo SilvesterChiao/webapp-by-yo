@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>gulp webapp</title>
+    <title>介绍</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
@@ -16,8 +16,9 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <!-- build:css styles/vue.css -->
+    <link rel="stylesheet" href="styles/vue.css">
     <!-- endbuild -->
 
 </head>
@@ -30,8 +31,8 @@
     <div class="container">
         <div class="header">
             <ul class="nav nav-pills pull-right">
-                <li class="active">
-                    <a href="#">Home</a>
+                <li>
+                    <a href="index.html">Home</a>
                 </li>
                 <li>
                     <a href="sass.html">Sass</a>
@@ -48,17 +49,58 @@
                 <li>
                     <a href="vue.html">vue</a>
                 </li>
-                <li>
-                    <a href="pattern.html">设计模式</a>
-                </li>
             </ul>
-            <h3 class="text-muted">Silvester</h3>
+            <h3 class="text-muted">gulp webapp</h3>
         </div>
 
         <div class="jumbotron">
-            <h1>'Allo, 'Allo!</h1>
+            <h1 id="text">
+                介绍
+            </h1>
             <p class="lead">Always a pleasure scaffolding your apps.</p>
             <p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
+        </div>
+
+        <h3>声明式渲染</h3>
+        <div id="app">
+            {{ message }}
+        </div>
+        <div id="app-2">
+            <span v-bind:title="message">
+                鼠标悬停几秒钟查看此处动态绑定的提示信息！
+            </span>
+        </div>
+        <div id="app-3">
+            <p v-if="seen">
+                现在你看到我了
+            </p>
+        </div>
+        <div id="app-4">
+            <ol>
+                <li v-for="todo in todos">
+                    {{ todo.text }}
+                </li>
+            </ol>
+        </div>
+        <div id="app-5">
+            <p>{{ message }}</p>
+            <button v-on:click="reverseMessage">
+                逆转消息
+            </button>
+        </div>
+        <div id="app-6">
+            <p>{{ message }}</p>
+            <input type="text" v-model="message">
+        </div>
+
+        <div id="app-7">
+            <ol>
+                <!-- 现在我们为每个todo-item提供待办项对象 -->
+                <!-- 待办项对象是变量，即其内容可以是动态的 -->
+                <todo-item v-for="item in groceryList" v-bind:todo="item">
+
+                </todo-item>
+            </ol>
         </div>
 
         <div class="row marketing">
@@ -89,24 +131,7 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js scripts/plugins.js -->
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js scripts/main.js -->
-    <script src="scripts/main.js"></script>
-    <!-- endbuild -->
+    <script src="scripts/v-introduce.js"></script>
 </body>
 
 </html>

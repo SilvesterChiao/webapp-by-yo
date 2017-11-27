@@ -2,3 +2,5 @@
 
 Sass, ES6  
 Bootstrap, jQuery, Animate.css, mustache.js
+
+vue, vue-router

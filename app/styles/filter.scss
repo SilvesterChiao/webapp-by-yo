@@ -1,0 +1,46 @@
+
+// filter
+.filter {
+    .filter-pic-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        align-content: space-between;
+
+        .filter-item {
+            width: 200px;
+            .pic {
+                width: 100%;
+
+                &.blur {
+                    filter: blur(1px);
+                }
+                &.brightness {
+                    filter: brightness(1.5);
+                }
+                &.contrast {
+                    filter: contrast(1.5);
+                }
+                &.grayscale {
+                    filter: grayscale(0.5);
+                }
+                &.hue-rotate {
+                    filter: hue-rotate(240deg);
+                }
+                &.invert {
+                    filter: invert(0.9);
+                }
+                &.opacity {
+                    filter: opacity(0.5);
+                }
+                &.saturate {
+                    filter: saturate(1.5);
+                }
+                &.sepia {
+                    filter: sepia(1.7);
+                }
+            }
+        }
+    }
+}

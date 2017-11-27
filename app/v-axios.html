@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>axios</title>
+</head>
+<body>
+	<h1>axios笔记</h1>
+	<div id="user">
+		<ul>
+			<li v-for="item in data">
+				<h3>{{ item.title }}</h3>
+			</li>
+		</ul>
+	</div>
+
+	<script src="vendors/vue.js"></script>
+	<script src="vendors/axios.js"></script>
+	<script>
+		var vm = new Vue({
+			el: '#user',
+			data: {
+				data: {}
+			},
+			created: function(){
+				this.getUser();
+			},
+			methods: {
+				getUser(){
+					axios.get('http://192.168.1.200:3003/news')
+						.then(function(response){
+							console.log(response.data);
+							vm.data = response.data;
+						})
+						.catch(function(error){
+							console.log(error);
+						});
+				}
+			}
+		});
+		// 1 执行GET请求
+		axios.get('http://192.168.1.200:3000/sites')
+			.then(function(response){
+				console.log(response);
+			})
+			.catch(function(error){
+				console.log(error);
+			});
+
+		// 2 执行POST请求
+		axios.post('http://192.168.1.200:3000/hot')
+			.then(function(response){
+				console.log(response);
+			})
+			.catch(function(error){
+				console.log(error);
+			});
+	</script>
+
+</body>
+</html>

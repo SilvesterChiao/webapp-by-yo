@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>todolist</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<!-- <div id="todo">
+		<div class="add-todo">
+			<button v-on:click="addDay">添加</button>
+		</div>
+		<div v-for="item in todos">
+			<h3>{{ item.date }}</h3>
+			<add-todo v-on:addTodolist="addTodo"></add-todo>
+			<ul>
+				<li v-for="content in item.content">
+					{{ content.number }}
+					{{ content.text }}
+					{{ content.time }}
+					{{ content.state }}
+				</li>
+			</ul>
+		</div>
+	</div> -->
+
+
+	<div class="container" id="todo">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="add-todo">
+					<form class="form-inline" @submit.prevent="addTodo">
+						<div class="form-group">
+							<label class="sr-only" for="todoItem">待办项</label>
+							<input type="text" class="form-control" id="todoItem" placeholder="新增待办项" v-model="newTodo.title">
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">待办事项</h3>
+					</div>
+					<ul class="list-group">
+						<li class="list-group-item" v-for="todo in todoList" v-if="!todo.done">
+							<label>
+								<input type="checkbox" v-model="todo.done">
+								{{ todo.title }}
+							</label>
+						</li>
+					</ul>
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">完成事项</h3>
+					</div>
+					<ul class="list-group">
+						<li class="list-group-item" v-for="todo in todoList" v-if="todo.done">
+							<label>
+								<input type="checkbox" v-model="todo.done" readonly>
+								{{ todo.title }}
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="vendors/vue.js"></script>
+	<script src="js/todolist.js"></script>
+</body>
+</html>
+

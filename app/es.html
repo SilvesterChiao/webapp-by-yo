@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>gulp webapp</title>
+    <title>EcmaScript 6</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
@@ -16,8 +16,9 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <!-- build:css styles/es.css -->
+    <link rel="stylesheet" href="styles/es.css">
     <!-- endbuild -->
 
 </head>
@@ -30,14 +31,14 @@
     <div class="container">
         <div class="header">
             <ul class="nav nav-pills pull-right">
-                <li class="active">
-                    <a href="#">Home</a>
+                <li>
+                    <a href="index.html">Home</a>
                 </li>
                 <li>
                     <a href="sass.html">Sass</a>
                 </li>
-                <li>
-                    <a href="es.html">es6</a>
+                <li class="active">
+                    <a href="#">es6</a>
                 </li>
                 <li>
                     <a href="bootstrap.html">Bootstrap</a>
@@ -48,11 +49,8 @@
                 <li>
                     <a href="vue.html">vue</a>
                 </li>
-                <li>
-                    <a href="pattern.html">设计模式</a>
-                </li>
             </ul>
-            <h3 class="text-muted">Silvester</h3>
+            <h3 class="text-muted">gulp webapp</h3>
         </div>
 
         <div class="jumbotron">
@@ -80,33 +78,7 @@
         </div>
     </div>
 
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/mustache.js/mustache.js"></script>
-    <script src="/bower_components/vue/dist/vue.js"></script>
-    <script src="/bower_components/vue-router/dist/vue-router.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:js scripts/plugins.js -->
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
-    <!-- endbuild -->
 </body>
 
 </html>

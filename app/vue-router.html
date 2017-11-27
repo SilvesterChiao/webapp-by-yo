@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-router</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- build:css styles/vue.css -->
+    <link rel="stylesheet" href="styles/vue.css">
+    <!-- endbuild -->
+
+</head>
+
+<body>
+    <!--[if IE]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="sass.html">Sass</a>
+                </li>
+                <li>
+                    <a href="es.html">es6</a>
+                </li>
+                <li>
+                    <a href="bootstrap.html">Bootstrap</a>
+                </li>
+                <li>
+                    <a href="jquery.html">jQuery</a>
+                </li>
+                <li>
+                    <a href="vue.html">vue</a>
+                </li>
+            </ul>
+            <h3 class="text-muted">gulp webapp</h3>
+        </div>
+
+        <div class="jumbotron">
+            <h1 id="text">
+                vue-router
+            </h1>
+        </div>
+
+        <div id="app">
+            <h1>Hello APP</h1>
+            <p>
+                <!-- 使用 router-link 组件来导航. -->
+                <!-- 通过传入 `to` 属性指定链接. -->
+                <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+                <router-link to="/Foo">Go to Foo</router-link>
+                <router-link to="/Bar">Go to Bar</router-link>
+            </p>
+
+            <p>
+                <!-- 动态路径 -->
+                <router-link to="/user/foo">Go to foo</router-link>
+                <router-link to="/user/bar">Go to bar</router-link>
+            </p>
+
+            <!-- 嵌套路由 -->
+            <p>
+                <router-link to="/user/foo">/user/foo</router-link>
+                <router-link to="/user/foo/profile">/user/foo/profile</router-link>
+                <router-link to="/user/foo/posts">/user/foo/posts</router-link>
+            </p>
+
+            <!-- 路由出口 -->
+            <!-- 路由匹配到的组件将渲染在这里 -->
+            <router-view>
+
+            </router-view>
+        </div>
+
+        <div class="row marketing">
+            <div class="col-lg-6">
+                <h4>HTML5 Boilerplate</h4>
+                <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps
+                    or sites.</p>
+
+                <h4>Sass</h4>
+                <p>Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.</p>
+
+                <h4>Bootstrap</h4>
+                <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>♥ from the Yeoman team</p>
+        </div>
+    </div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/mustache.js/mustache.js"></script>
+    <script src="/bower_components/vue/dist/vue.js"></script>
+    <script src="/bower_components/vue-router/dist/vue-router.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <script src="scripts/main.js"></script>
+    <script>
+        // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
+
+        // 1. 定义（路由）组件。
+        // 可以从其他文件 import 进来
+        var Foo = { template: '<div>foo</div>' }
+        var Bar = { template: '<div>bar</div>' }
+
+        var User = {
+            // template: '<div>User {{ $route.params.id }}</div>',
+            template: `
+                <div class="user">
+                    <h2>User {{ $route.params.id }}</h2>
+                    <router-view></router-view>
+                </div>
+            `,
+            watch: {
+                '$route'(to, from){
+                    console.log('OK')
+                }
+            }
+        };
+
+        var UserHome = {template: '<div>Home</div>'};
+        var UserProfile = {template: '<div>Profile</div>'};
+        var UserPosts = {template: '<div>Posts</div>'};
+
+        // 2. 定义路由
+        // 每个路由应该映射一个组件。 其中"component" 可以是
+        // 通过 Vue.extend() 创建的组件构造器，
+        // 或者，只是一个组件配置对象。
+        // 我们晚点再讨论嵌套路由。
+        var routes = [
+            { path: '/foo', component: Foo },
+            { path: '/bar', component: Bar }
+        ]
+
+        // 3. 创建 router 实例，然后传 `routes` 配置
+        // 你还可以传别的配置参数, 不过先这么简单着吧。
+        // var router = new VueRouter({
+        //     routes: routes // （缩写）相当于 routes: routes
+        // })
+
+        // 动态路由
+        // var router = new VueRouter({
+        //     routes: [
+        //         // 动态路径参数 以冒号开头
+        //         {
+        //             path: '/user/:id',
+        //             component: User
+        //         }
+        //     ]
+        // })
+
+        // 嵌套路由
+        var router = new VueRouter({
+            routes: [
+                {
+                    path: '/user/:id',
+                    component: User,
+                    children: [
+                        {path: '', component: UserHome},
+                        {path: 'profile', component: UserProfile},
+                        {path: 'posts', component: UserPosts}
+                    ]
+                }
+            ]
+        });
+
+        // 4. 创建和挂载根实例。
+        // 记得要通过 router 配置参数注入路由，
+        // 从而让整个应用都有路由功能
+        var app = new Vue({
+            router
+        }).$mount('#app')
+
+        // 现在，应用已经启动了！
+
+    </script>
+</body>
+
+</html>
