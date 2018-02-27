@@ -37,9 +37,6 @@
                     <a href="#">Sass</a>
                 </li>
                 <li>
-                    <a href="es.html">es6</a>
-                </li>
-                <li>
                     <a href="bootstrap.html">Bootstrap</a>
                 </li>
                 <li>
@@ -177,6 +174,39 @@
             <p>♥ from the Yeoman team</p>
         </div>
     </div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/mustache.js/mustache.js"></script>
+    <script src="/bower_components/vue/dist/vue.js"></script>
+    <script src="/bower_components/vue-router/dist/vue-router.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <script>
+        var $window = $(window);
+        var winHeight = $window.height();
+
+        function revealOnScroll(){
+            console.log('ok');
+            var scrollTop = $window.scrollTop();
+            $('.rotate').each(function(){
+                $this = $(this);
+                var height = $this.offset().top;
+                if(height - scrollTop < winHeight){
+                    setTimeout(function(){
+                        $this.addClass('animated flash');
+                    }, 1000);
+
+                    $window.off('scroll', revealOnScroll);
+                }
+            })
+        };
+
+        $(document).ready(function(){
+            $window.on('scroll', revealOnScroll);
+        });
+    </script>
 </body>
 
 </html>

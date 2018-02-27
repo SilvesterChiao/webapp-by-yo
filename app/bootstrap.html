@@ -35,9 +35,6 @@
                 <li>
                     <a href="sass.html">Sass</a>
                 </li>
-                <li>
-                    <a href="es.html">es6</a>
-                </li>
                 <li class="active">
                     <a href="#">Bootstrap</a>
                 </li>
@@ -55,6 +52,9 @@
             <h1>Bootstrap!</h1>
             <p class="lead">
                 Bootstrap是非常流行的响应式前端UI框架
+            </p>
+            <p>
+                <a href="http://v3.bootcss.com/css/" class="btn btn-lg btn-success">文档</a>
             </p>
         </div>
 
@@ -99,11 +99,181 @@
             </div>
             <div class="col-md-6">
                 <h3>Bootstrap常用插件</h3>
+                <ul>
+                    <li>模态框</li>
+                    <li>下拉菜单</li>
+                    <li>滚动监听</li>
+                    <li>标签页</li>
+                    <li>工具提示</li>
+                    <li>弹出框</li>
+                    <li>警告框</li>
+                    <li>按钮</li>
+                    <li>手风琴</li>
+                    <li>轮播图</li>
+                    <li>affix</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <h3>Bootstrap组件</h3>
+            <div>
+                <h5>字体图标</h5>
+                <div>
+                    <!-- 直接使用 -->
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <!-- 用于button -->
+                    <button type="button" class="btn btn-default" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-star"></span> Star
+                    </button>
+                    <!-- 用于alert -->
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>your
+                        Enter a valid email address
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h5>下拉菜单</h5>
+                <div>
+                    <!-- dropdown下拉  dropup上拉 -->
+                    <div class="dropup">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            下拉菜单
+                            <span class="caret"></span>
+                        </button>
+                        <!-- dropdown-menu-right右对齐 -->
+                        <ul class="dropdown-menu">
+                            <!-- dropdown-header标题 -->
+                            <li class="dropdown-header">水果</li>
+                            <li>
+                                <a href="###">香蕉</a>
+                            </li>
+                            <li>
+                                <a href="###">苹果</a>
+                            </li>
+                            <!-- divider分割线 -->
+                            <li role="separator" class="divider"></li>
+                            <!-- disabled禁用选项 -->
+                            <li class="disabled"><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h5>按钮组</h5>
+                <div>
+                    <!-- btn-group-vertical垂直排列 btn-group-justified两端对齐 -->
+                    <!-- 两端对齐 a.btn btn-group  不能用于button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default">Left</button>
+                        <button type="button" class="btn btn-default">Middle</button>
+                        <button type="button" class="btn btn-default">Right</button>
+                    </div>
+                    <div class="btn-group btn-group-justified">
+                        <a href="###" class="btn btn-default">1</a>
+                        <a href="###" class="btn btn-default">2</a>
+                        <a href="###" class="btn btn-default">3</a>
+                    </div>
+
+                    <div class="btn-toobar">
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-default">1</button>
+                            <button class="btn btn-default">2</button>
+                            <button class="btn btn-default">3</button>
+                            <button class="btn btn-default">4</button>
+                        </div>
+                        <div class="btn-group btn-group-xs">
+                            <button class="btn btn-default">5</button>
+                            <button class="btn btn-default">6</button>
+
+                            <!-- 在btn-group中添加下拉菜单 -->
+                            <div class="btn-group btn-group-xs">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    下拉
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="###">胡萝卜</a></li>
+                                    <li><a href="###">黄瓜</a></li>
+                                    <li><a href="###">茄子</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h5>按钮式下拉菜单</h5>
+                <div>
+                    <!-- dropup向上 -->
+                    <div class="btn-group dropup">
+                        <!-- 按钮类型btn-primary btn-info btn-success btn-warning btn-danger -->
+                        <!-- 按钮尺寸btn-lg btn-sm btn-xs -->
+                        <!-- <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            Action <span class="caret"></span>
+                        </button> -->
+                        <!-- 分裂式 -->
+                        <button type="button" class="btn btn-info">Action</button>
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">前端</li>
+                            <li><a href="###">HTML</a></li>
+                            <li><a href="###">CSS</a></li>
+                            <li><a href="###">ES</a></li>
+                            <li class="divider"></li>
+                            <li><a href="###">sass</a></li>
+                            <li><a href="###">jade</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h5>输入框组</h5>
+                <div>
+
+                </div>
+            </div>
+            <h3>Bootstrap插件</h3>
+            <div>
+                <h5>模态框</h5>
+                <div>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                        Launch demo modal
+                    </button>
+                </div>
+
             </div>
         </div>
 
         <div class="footer">
             <p>♥ from the Yeoman team</p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
         </div>
     </div>
 

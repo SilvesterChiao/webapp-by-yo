@@ -1,0 +1,23 @@
+@media(min-width: 480px){
+    .jumbotron{
+        background-color: red;
+    }
+}
+
+@media(min-width: 768px){
+    .jumbotron{
+        background-color: blue;
+    }
+}
+
+@media(min-width: 992px){
+    .jumbotron{
+        background-color: green;
+    }
+}
+
+@media(min-width: 1200px){
+    .jumbotron{
+        background-color: yellow;
+    }
+}

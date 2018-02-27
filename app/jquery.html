@@ -38,9 +38,6 @@
                     <a href="sass.html">Sass</a>
                 </li>
                 <li>
-                    <a href="es.html">es6</a>
-                </li>
-                <li>
                     <a href="bootstrap.html">Bootstrap</a>
                 </li>
                 <li class="active">
@@ -53,25 +50,91 @@
             <h3 class="text-muted">gulp webapp</h3>
         </div>
 
-        <div class="jumbotron">
-            <h1>'Allo, 'Allo!</h1>
-            <p class="lead">Always a pleasure scaffolding your apps.</p>
-            <p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
+        <div class="ajax-demo">
+            <h3>ajax练习</h3>
+            <div class="ajax-js">
+                <button id="ajax-btn-js">原生ajax</button>
+                <div id="ajax-output-js" class="output">
+                    <h5>请求信息</h5>
+                </div>
+                <div id="ajax-info-js" class="user-info">
+                    <h5>返回数据</h5>
+                </div>
+            </div>
+            <div class="ajax-jq">
+                <button id="ajax-btn-jq">$.ajax()</button>
+                <div id="ajax-output-jq" class="output">
+                    <h5>请求信息</h5>
+                </div>
+                <div id="ajax-info-jq" class="user-info">
+                    <h5>返回数据</h5>
+                </div>
+            </div>
+            <div class="ajax-jsonp">
+                <button id="ajax-btn-jsonp">jsonp</button>
+                <div id="ajax-output-jsonp" class="output">
+                    <h5>请求信息</h5>
+                </div>
+                <div id="ajax-info-jsonp" class="user-info">
+                    <h5>返回数据</h5>
+                </div>
+            </div>
+
+            <h5>mustache.js</h5>
+            <div id="content">loading</div>
         </div>
 
-        <div class="row marketing">
-            <div class="col-lg-6">
-                <h4>HTML5 Boilerplate</h4>
-                <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps
-                    or sites.</p>
+        <div class="event-demo">
+            <p>
+                事件类型：<br>
+                事件目标：<br>
+                事件处理程序（事件监听程序）：<br>
+                事件对象：<br>
+                事件传播：<br>
+            </p>
+            <div>
+                <h5>表单事件</h5>
+                <p>
+                    form元素触发submit和reset事件<br>
+                    类按钮元素触发click事件<br>
+                    输入文字，选择选项，选择复选框触发change事件<br>
 
-                <h4>Sass</h4>
-                <p>Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.</p>
-
-                <h4>Bootstrap</h4>
-                <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
+                </p>
+                <form id="event-form-demo" action="#">
+                    姓名：<input type="text" name="userName">
+                    <br>
+                    性别：
+                        <input type="radio" name="sex" value="0"> 女
+                        <input type="radio" name="sex" value="1"> 男
+                    <br>
+                    老师：
+                        <input type="checkbox" name="teacher" value="0"> 苍老师
+                        <input type="checkbox" name="teacher" value="1"> 小泽老师
+                        <input type="checkbox" name="teacher" value="2"> 波多老师
+                    <br>
+                    水果：
+                    <select name="shuiguo">
+                        <option value="0">苹果</option>
+                        <option value="1">香蕉</option>
+                        <option value="2">梨</option>
+                        <option value="3">橘子</option>
+                    </select>
+                    <br>
+                    <input type="reset" value="重置">
+                    <input type="submit" value="提交">
+                </form>
             </div>
         </div>
+
+        <div class="jtemplates-demo">
+            <div id="result">
+
+            </div>
+        </div>
+
+        <p style="display: none;">
+            <textarea name="result-template" id="result-template"></textarea>
+        </p>
 
         <div class="footer">
             <p>♥ from the Yeoman team</p>
@@ -88,10 +151,34 @@
     <!-- endbuild -->
 
     <!-- build:js scripts/jq.js -->
+    <script src="scripts/jquery-jtemplates_uncompressed.js"></script>
     <script src="scripts/jq.js"></script>
     <!-- endbuild -->
 
     <script>
+        // jtemplates demo
+        $(function(){
+            $.get('http://localhost:3004/getinfo', function(d){
+                // $("#ajax-info-jsonp").text('email:' + d.email + ', name:' + d.name);
+                console.log(d);
+                // $("#result").setTemplateElement("result-template");
+                // $("#result").processTemplate("jTemplates");
+            }, 'jsonp');
+        })
+    </script>
+
+    <script>
+        //IIFE(立即执行函数)
+        (function(){
+            var foo = 10;
+            var bar = 2;
+            console.log(foo * bar);
+        })();
+
+        //带参IIFE
+        (function(a,b){
+            console.log(a * b);
+        })(4, 5);
         $(function(){
             // $('div, span').css({
             //     border: '1px solid #ccc'
@@ -103,8 +190,84 @@
             //     fontSize: '20px',
             //     textDecoration: 'underline'
             // })
+        });
+
+        window.onload = function(){
+			//quick example
+			var hehe = {
+				title : "Joe",
+				calc : function(){
+					return 2 + 4;
+				}
+			};
+			var output = Mustache.render("{{title}} speeds {{calc}}",hehe);
+			console.log(output);
+			//定义数据，实际使用Ajax从服务器获取数据
+			var person = {
+				name : 'lilei',
+				age : 14 ,
+				marry : false ,
+				address : {
+					city : 'fuzhou' ,
+					street : 'hehe'
+				},
+				girlfriend : ['hanmeimei','lili','lucy','tony'],
+				teacher : [
+					{name : 'teacher cang'},
+					{name : 'teacher jize'},
+					{name : 'teacher boduo'}
+				]
+			};
+			//获取模板
+			var template = document.getElementById('template').innerHTML;
+			//预编译模板
+			Mustache.parse(template);
+			//渲染模板，并指定了tem到person的映射
+			var view = Mustache.render(template,{tem:person});
+			document.getElementById('content').innerHTML = view;
+		}
+    </script>
+    <script>
+        // 事件练习
+        // 表单事件
+        var name = $('#event-form-demo input[name="userName"]');
+        var sex = $('#event-form-demo input[name="sex"]');
+        var teacher = $('#event-form-demo input[name="teacher"]');
+        var shuiguo = $('#event-form-demo input[name="shuiguo"]');
+
+        console.log(name);
+
+        $('#event-form-demo input[name="userName"]').on('textinput', function(e){
+            console.log(e);
         })
     </script>
+
+    <!-- template -->
+    <script type="x-tmpl-mustache" id="user-tem">
+		<p>我的名字叫{{tem.name}},今年{{tem.age}}岁</p>
+		<ul>
+			<h3>我的老师：</h3>
+			{{#tem.teacher}}
+				<li>{{.}}</li>
+			{{/tem.teacher}}
+		</ul>
+		<p>
+			他们都是我的朋友:
+			{{#tem.friends}}{{.}}{{/tem.friends}}
+			{{^tem.friends}}我没有朋友{{/tem.friends}}
+		</p>
+    </script>
+    <script id="template" type="x-tmpl-mustache">
+		<!-- 直接使用 -->
+		<p>My name is {{tem.name}},I am {{tem.age}} years old</p>
+		<!-- 判断是否为空 -->
+		<p>{{#tem.marry}}I am married{{/tem.marry}}</p>
+		<p>{{^tem.marry}}I am not married{{/tem.marry}}</p>
+		<!-- {{.}}用于girlfriend这种情况(字符串数组) -->
+		<p>They are my girlfriend:{{#tem.girlfriend}}{{.}},{{/tem.girlfriend}}</p>
+		<!-- 循环用于teacher这种情况,对象数组，而且属性名一样 -->
+		<p>They are my teacher:{{#tem.teacher}}{{name}},{{/tem.teacher}}</p>
+	</script>
 </body>
 
 </html>

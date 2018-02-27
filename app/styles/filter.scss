@@ -15,6 +15,7 @@
 
                 &.blur {
                     filter: blur(1px);
+                    animation: float 6s infinite linear;
                 }
                 &.brightness {
                     filter: brightness(1.5);
@@ -42,5 +43,23 @@
                 }
             }
         }
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: rotate(0);
+    }
+    25% {
+        transform: rotate(30deg);
+    }
+    50% {
+        transform: rotate(-30deg);
+    }
+    75% {
+        transform: rotate(30deg);
+    }
+    100% {
+        transform: rotate(0);
     }
 }
